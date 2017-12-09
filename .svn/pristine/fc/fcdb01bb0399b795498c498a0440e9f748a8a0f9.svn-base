@@ -1,0 +1,25 @@
+package cn.ucai.server.service.Impl;
+
+import cn.ucai.entity.Ticket;
+import cn.ucai.server.dao.TicketDao;
+import cn.ucai.server.dao.Impl.TicketDaoImpl;
+import cn.ucai.server.service.Call_Dispose_FailService;
+
+
+public class Call_Dispose_FailServiceImpl implements Call_Dispose_FailService{
+	TicketDao ticketDao=new TicketDaoImpl();
+	@Override
+	public Ticket DisposeFail(Integer id) {
+
+		
+		Ticket t=ticketDao.selectById(id);
+		if(null==t){
+			return null;
+		}else{
+		boolean result=ticketDao.UpdateByState(2, t.getId());
+		Ticket ticket=ticketDao.selectById(t.getId());
+		return ticket;
+		}
+	}
+
+}

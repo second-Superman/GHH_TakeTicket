@@ -1,0 +1,9 @@
+package cn.ucai.server.service;
+/**
+ * 暂停服务的处理接口
+ * @author Administrator
+ *
+ */
+public interface Call_Stop_ServerService {
+
+}

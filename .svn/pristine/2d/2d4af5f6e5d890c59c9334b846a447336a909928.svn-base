@@ -1,0 +1,34 @@
+package cn.ucai.server.action;
+
+import cn.ucai.dto.RequestAction;
+import cn.ucai.dto.RequestMsg;
+/**
+ * 请求的Ation的工厂类
+ * @author Administrator
+ *
+ */
+public class ActionFactory {
+	public static BaseAction getAction(RequestMsg requestMsg) {
+		// 获取处理“获取业务”的Action
+		if (requestMsg.getAction() == RequestAction.TAKE_GETBUSINESS) {
+			return new Take_GetBusinessAction();
+		}
+		// 获取处理“取号”请求的Action
+		else if (requestMsg.getAction() == RequestAction.TAKE_TAKENUM) {
+			return new Take_TakeNumAction();
+		}else if(requestMsg.getAction() == RequestAction.CALL_CALLNUM){
+			return new Call_CallNumAction();
+		}
+		else if(requestMsg.getAction() == RequestAction.CALL_RECALL){
+			return new Call_ReCallAction();
+		}
+		else if(requestMsg.getAction() == RequestAction.CALL_DISPOSE_SUCCESS){
+			return new Call_Dispose_SuccessAction();
+		}else if(requestMsg.getAction() == RequestAction.CALL_DISPOSE_FAIL){
+			return new Call_Dispose_FailAction();
+		}else if(requestMsg.getAction()== RequestAction.CALL_STOP_SERVER){
+			return new Call_Stop_Server();
+		}
+		return null;
+	}
+}

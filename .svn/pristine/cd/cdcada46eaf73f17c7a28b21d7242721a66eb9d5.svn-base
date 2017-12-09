@@ -1,0 +1,111 @@
+package cn.ucai.callnum.view;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+
+import cn.ucai.util.ClockThread;
+
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JButton;
+import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class AJiaoHao_GUI extends JFrame {
+
+	private JPanel contentPane;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					AJiaoHao_GUI frame = new AJiaoHao_GUI();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public AJiaoHao_GUI() {
+		setResizable(false);
+		setTitle("普通业务");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(700, 200, 450, 483);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("业务人员操作界面");
+		lblNewLabel.setBounds(0, 0, 110, 30);
+		contentPane.add(lblNewLabel);
+		
+		JButton btnNewButton = new JButton("重复叫号");
+		btnNewButton.setFont(new Font("宋体", Font.BOLD, 18));
+		btnNewButton.setBounds(90, 46, 110, 50);
+		contentPane.add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("下一个号");
+		btnNewButton_1.setFont(new Font("宋体", Font.BOLD, 18));
+		btnNewButton_1.setBounds(90, 129, 110, 50);
+		contentPane.add(btnNewButton_1);
+		
+		JButton btnNewButton_2 = new JButton("暂停服务");
+		btnNewButton_2.setFont(new Font("宋体", Font.BOLD, 18));
+		btnNewButton_2.setBounds(90, 207, 110, 50);
+		contentPane.add(btnNewButton_2);
+		
+		JButton btnNewButton_3 = new JButton("办理完成");
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(btnNewButton_3, "办理完成");
+			}
+		});
+		btnNewButton_3.setFont(new Font("宋体", Font.BOLD, 18));
+		btnNewButton_3.setBounds(90, 293, 110, 50);
+		contentPane.add(btnNewButton_3);
+		
+		JButton btnNewButton_4 = new JButton("办理失败");
+		btnNewButton_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				BanLi_ShiBai_GUI j=new BanLi_ShiBai_GUI();
+				j.setVisible(true);
+			}
+		});
+		btnNewButton_4.setFont(new Font("宋体", Font.BOLD, 18));
+		btnNewButton_4.setBounds(90, 368, 110, 50);
+		contentPane.add(btnNewButton_4);
+		
+		JLabel lblNewLabel_1 = new JLabel("业务代码A2");
+		lblNewLabel_1.setFont(new Font("宋体", Font.PLAIN, 14));
+		lblNewLabel_1.setBounds(309, 10, 95, 35);
+		contentPane.add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_2 = new JLabel("等待人数1");
+		lblNewLabel_2.setFont(new Font("宋体", Font.PLAIN, 14));
+		lblNewLabel_2.setBounds(309, 46, 88, 30);
+		contentPane.add(lblNewLabel_2);
+		
+		JLabel lblNewLabel_3 = new JLabel("");
+		lblNewLabel_3.setFont(new Font("宋体", Font.BOLD, 12));
+		lblNewLabel_3.setBounds(196, 404, 222, 41);
+		contentPane.add(lblNewLabel_3);
+		ClockThread clockThread=new ClockThread(lblNewLabel_3);
+		clockThread.setPriority(10);
+		clockThread.start();
+	}
+
+}

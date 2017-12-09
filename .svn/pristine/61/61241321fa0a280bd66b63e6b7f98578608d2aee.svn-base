@@ -1,0 +1,12 @@
+package cn.ucai.server.dao;
+
+import cn.ucai.entity.Business;
+
+/**
+ * Business的Dao接口
+ * @author Administrator
+ *
+ */
+public interface BusinessDao extends BaseDao<Business>{
+
+}

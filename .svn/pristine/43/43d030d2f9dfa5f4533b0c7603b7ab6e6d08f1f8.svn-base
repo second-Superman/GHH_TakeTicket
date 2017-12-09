@@ -1,0 +1,61 @@
+package cn.ucai.callnum.view;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+
+import cn.ucai.util.Screen;
+
+import java.awt.Window.Type;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.SwingConstants;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+
+public class HuJiao_ShiBai_GUI extends JFrame {
+
+	private JPanel contentPane;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					HuJiao_ShiBai_GUI frame = new HuJiao_ShiBai_GUI();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public HuJiao_ShiBai_GUI() {
+		Screen s=new Screen();
+		setResizable(false);
+		setTitle("消息");
+		setType(Type.UTILITY);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds((s.scareenwidth()-450)/2, (s.scareenhight()-173)/2, 450, 173);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("叫号失败：没有等待的客户");
+		lblNewLabel.setIcon(new ImageIcon("img\\项目图片\\6f06fc9492ef1d3eb89c0d4db1f15d44.jpg"));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblNewLabel.setFont(new Font("宋体", Font.PLAIN, 16));
+		lblNewLabel.setBounds(10, 26, 354, 89);
+		contentPane.add(lblNewLabel);
+	}
+}

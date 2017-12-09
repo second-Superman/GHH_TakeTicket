@@ -1,0 +1,20 @@
+package cn.ucai.server.service.Impl;
+
+
+import cn.ucai.entity.Ticket;
+import cn.ucai.server.dao.TicketDao;
+import cn.ucai.server.dao.Impl.TicketDaoImpl;
+import cn.ucai.server.service.Call_Dispose_SuccessService;
+
+
+public class Call_Dispose_SuccessServiceImpl implements Call_Dispose_SuccessService{
+	TicketDao ticketDao=new TicketDaoImpl();
+	@Override
+	public Ticket Dispose_Success(Integer id) {
+		Ticket ticket=ticketDao.selectById(id);
+		
+		
+		return ticket;
+	}
+
+}

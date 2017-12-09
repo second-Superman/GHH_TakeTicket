@@ -1,0 +1,14 @@
+package cn.ucai.server.action;
+
+import cn.ucai.dto.RequestMsg;
+import cn.ucai.dto.ResponseMsg;
+
+public class Call_Dispose_FailAction implements BaseAction{
+
+	@Override
+	public ResponseMsg disposeRequest(RequestMsg requestMsg) {
+		
+		return null;
+	}
+
+}

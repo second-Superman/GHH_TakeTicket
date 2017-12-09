@@ -1,0 +1,97 @@
+package cn.ucai.callnum.net;
+
+
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.Socket;
+import java.net.UnknownHostException;
+
+import cn.ucai.dto.RequestMsg;
+import cn.ucai.dto.ResponseMsg;
+import cn.ucai.util.ConfigUtil;
+
+/**
+ * 客户端（叫号）的网络层，接收和发送数据
+ * @author Administrator
+ *
+ */
+public class CallNumNet {
+	ConfigUtil config=null;
+	String serverHost=null;
+	int serverPort=0;
+	private static Socket s=null;
+	private static CallNumNet callNumNet;
+	ObjectInputStream ois;
+	ObjectOutputStream oos;
+	private CallNumNet(){
+		if(serverHost==null){
+		 config=new ConfigUtil("server.properties");
+		 serverHost=config.getValue("server.ip");
+		 serverPort=Integer.valueOf(config.getValue("server.port"));
+		}
+		try {
+			
+			 s=new Socket(serverHost, serverPort);
+			 ois=new ObjectInputStream(s.getInputStream());
+			 oos=new ObjectOutputStream(s.getOutputStream());
+		} catch (NumberFormatException e) {
+			
+			e.printStackTrace();
+		} catch (UnknownHostException e) {
+		
+			e.printStackTrace();
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * 获取取号端网络传输类的一个实例（单例模型）
+	 */
+	
+	public static CallNumNet getInstanse(){
+		if(callNumNet==null){
+			callNumNet =new CallNumNet();
+		}
+		return callNumNet;
+	}
+	/**
+	 * 发送数据到服务端
+	 * @param requesMsg
+	 */
+	public void SendMsg(RequestMsg requesMsg){
+		try {
+			oos.writeObject(requesMsg);
+			oos.flush();
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+		
+	}
+	
+	/**
+	 * 从服务端接收消息
+	 * @return
+	 */
+	public ResponseMsg reciverMsg(){
+		try {
+			return (ResponseMsg)ois.readObject();
+		} catch (ClassNotFoundException e) {	
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	protected void finalize() throws Throwable {
+		oos.close();
+		ois.close();
+		s.close();
+	}
+	
+}

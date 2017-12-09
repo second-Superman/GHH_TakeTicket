@@ -1,0 +1,9 @@
+package cn.ucai.server.service;
+/**
+ * 办理失败的处理接口
+ * @author Administrator
+ *
+ */
+public interface Call_Dispose_FailService {
+
+}

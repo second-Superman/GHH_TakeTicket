@@ -1,0 +1,26 @@
+package cn.ucai.server.service.Impl;
+
+
+
+import cn.ucai.entity.Ticket;
+import cn.ucai.server.dao.TicketDao;
+import cn.ucai.server.dao.Impl.TicketDaoImpl;
+import cn.ucai.server.service.Call_NumService;
+
+
+/**
+ * 叫号
+ * @author Administrator
+ *
+ */
+public class Call_NumserviceImpl implements Call_NumService{
+	TicketDao ticketDao=new TicketDaoImpl();
+	
+	@Override
+	public Ticket CallNum() {
+		Ticket  ticket=ticketDao.selectByIsCalled(0);
+		
+		return ticket;
+	}
+
+}

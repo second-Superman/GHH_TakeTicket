@@ -1,0 +1,16 @@
+package cn.ucai.server.dao;
+
+import java.util.List;
+
+import cn.ucai.entity.Ticket;
+
+/**
+ * Ticket的Dao接口
+ * @author Administrator
+ *
+ */
+public interface TicketDao extends BaseDao<Ticket>{
+	public int selectCount(Ticket t);
+	public Ticket selectByIsCalled(Integer iscalled);
+	
+}

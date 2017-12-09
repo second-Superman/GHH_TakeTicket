@@ -1,0 +1,189 @@
+package cn.ucai.callnum.view;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+
+import cn.ucai.callnum.net.CallNumNet;
+import cn.ucai.dto.RequestAction;
+import cn.ucai.dto.RequestMsg;
+import cn.ucai.dto.ResponseMsg;
+import cn.ucai.entity.Ticket;
+import cn.ucai.server.dao.TicketDao;
+import cn.ucai.server.dao.Impl.TicketDaoImpl;
+import cn.ucai.util.ClockThread;
+
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JButton;
+import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.util.HashMap;
+import java.util.Map;
+import java.awt.event.ActionEvent;
+
+public class AJiaoHao_GUI extends JFrame {
+
+	private JPanel contentPane;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					AJiaoHao_GUI frame = new AJiaoHao_GUI();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public AJiaoHao_GUI() {
+		setResizable(false);
+		setTitle("普通业务");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(700, 200, 450, 483);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("业务人员操作界面");
+		lblNewLabel.setBounds(0, 0, 110, 30);
+		contentPane.add(lblNewLabel);
+		
+		JButton btnNewButton = new JButton("重复叫号");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//向服务端发起请求
+//				RequestMsg requestMsg=new RequestMsg();
+//				requestMsg.setAction(RequestAction.CALL_RECALL);
+//				Map<String, Object> data =new HashMap<String,Object>();
+//				data.put("b_code", "number");
+//				requestMsg.setData(data);
+//				CallNumNet.getInstanse().SendMsg(requestMsg);
+//				//接收返回的数据
+//				
+//				ResponseMsg responseMsg=CallNumNet.getInstanse().reciverMsg();
+				
+			}
+		});
+		btnNewButton.setFont(new Font("宋体", Font.BOLD, 18));
+		btnNewButton.setBounds(90, 46, 110, 50);
+		contentPane.add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("下一个号");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TicketDao td = new TicketDaoImpl();
+				Ticket t=new Ticket();
+				td.selectByIsCalled(0);
+				
+				//向服务端发起请求
+				RequestMsg requestMsg=new RequestMsg();
+				requestMsg.setAction(RequestAction.CALL_CALLNUM);
+				Map<String, Object> data=new HashMap<String,Object>();
+				data.put("b_code", t.getB_code());
+				data.put("number", t.getNumber());
+				requestMsg.setData(data);
+				CallNumNet.getInstanse().SendMsg(requestMsg);
+				
+				//接收返回的数据
+				ResponseMsg responseMsg=CallNumNet.getInstanse().reciverMsg();
+				//使用数据
+				
+				
+			}
+		});
+		btnNewButton_1.setFont(new Font("宋体", Font.BOLD, 18));
+		btnNewButton_1.setBounds(90, 129, 110, 50);
+		contentPane.add(btnNewButton_1);
+		
+		JButton btnNewButton_2 = new JButton("暂停服务");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//发送数据给服务端
+//				RequestMsg requestMsg=new RequestMsg();
+//				requestMsg.setAction(RequestAction.CALL_STOP_SERVER);
+//				Map<String, Object> data=new HashMap<String,Object>();
+//				data.put(key, value);
+//				requestMsg.setData(data);
+//				CallNumNet.getInstanse().SendMsg(requestMsg);
+//				
+//				//接收响应的数据
+//				ResponseMsg responseMsg=CallNumNet.getInstanse().reciverMsg();
+				
+			}
+		});
+		btnNewButton_2.setFont(new Font("宋体", Font.BOLD, 18));
+		btnNewButton_2.setBounds(90, 207, 110, 50);
+		contentPane.add(btnNewButton_2);
+		
+		JButton btnNewButton_3 = new JButton("办理完成");
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+//				//向服务端发送请求
+//				RequestMsg requestMsg=new RequestMsg();
+//				requestMsg.setAction(RequestAction.CALL_DISPOSE_SUCCESS);
+//				Map<String, Object> data=new HashMap<String,Object>();
+//				data.put(key, value);
+//				requestMsg.setData(data);
+//				CallNumNet.getInstanse().SendMsg(requestMsg);
+//				
+//				//接收响应的数据
+//				ResponseMsg responseMsg=CallNumNet.getInstanse().reciverMsg();
+			}
+		});
+		btnNewButton_3.setFont(new Font("宋体", Font.BOLD, 18));
+		btnNewButton_3.setBounds(90, 293, 110, 50);
+		contentPane.add(btnNewButton_3);
+		
+		JButton btnNewButton_4 = new JButton("办理失败");
+		btnNewButton_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+//				//向服务端发送数据
+//				RequestMsg requestMsg=new RequestMsg();
+//				requestMsg.setAction(RequestAction.CALL_DISPOSE_FAIL);
+//				Map<String, Object> data=new HashMap<String ,Object>();
+//				data.put(key, value);
+//				requestMsg.setData(data);
+//				CallNumNet.getInstanse().SendMsg(requestMsg);
+//				
+//				//接收响应的数据
+//				ResponseMsg responseMsg =CallNumNet.getInstanse().reciverMsg();
+			}
+		});
+		btnNewButton_4.setFont(new Font("宋体", Font.BOLD, 18));
+		btnNewButton_4.setBounds(90, 368, 110, 50);
+		contentPane.add(btnNewButton_4);
+		
+		JLabel lblNewLabel_1 = new JLabel("业务代码A");
+		lblNewLabel_1.setFont(new Font("宋体", Font.PLAIN, 14));
+		lblNewLabel_1.setBounds(309, 10, 95, 35);
+		contentPane.add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_2 = new JLabel("等待人数 1");
+		lblNewLabel_2.setFont(new Font("宋体", Font.PLAIN, 14));
+		lblNewLabel_2.setBounds(309, 46, 88, 30);
+		contentPane.add(lblNewLabel_2);
+		
+		JLabel lblNewLabel_3 = new JLabel("");
+		lblNewLabel_3.setFont(new Font("宋体", Font.BOLD, 12));
+		lblNewLabel_3.setBounds(196, 404, 222, 41);
+		contentPane.add(lblNewLabel_3);
+		ClockThread clockThread=new ClockThread(lblNewLabel_3);
+		clockThread.setPriority(10);
+		clockThread.start();
+	}
+
+}

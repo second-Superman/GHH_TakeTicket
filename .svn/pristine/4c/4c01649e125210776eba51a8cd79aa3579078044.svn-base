@@ -1,0 +1,127 @@
+package cn.ucai.server.net;
+
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.ServerSocket;
+import java.net.Socket;
+
+import cn.ucai.dto.RequestAction;
+import cn.ucai.dto.RequestMsg;
+import cn.ucai.dto.ResponseMsg;
+import cn.ucai.server.action.ActionFactory;
+import cn.ucai.server.action.Take_GetBusinessAction;
+import cn.ucai.util.ConfigUtil;
+
+/**
+ * 服务器的监听器 监听客户端的连接
+ * 
+ * @author Administrator
+ *
+ */
+public class ServerMonitor {
+	public static int SERVER_PORT = 0;
+	private static boolean isRun = true;
+	private static ServerSocket ss = null;
+
+	public static void main(String[] args) {
+		ServerMonitor sm = new ServerMonitor();
+		sm.startServer();
+
+	}
+
+	/**
+	 * 开启服务器 如果端口占用，会换一个端口开启
+	 */
+	public void startServer() {
+		try {
+			if (SERVER_PORT == 0) {
+				ConfigUtil config = new ConfigUtil("server.properties");
+				SERVER_PORT = Integer.valueOf(config.getValue("server.port"));
+			}
+			ss = new ServerSocket(SERVER_PORT);
+			System.out.println("服务器已启动，监听在" + SERVER_PORT + "端口");
+			while (isRun) {
+
+				while (isRun) {
+					Socket s = ss.accept();
+					//System.out.println(s.getInetAddress().getHostAddress());
+					new ServerThread(s).start();
+				}
+
+			}
+
+		} catch (NumberFormatException e) {
+
+			e.printStackTrace();
+		} catch (IOException e) {
+			SERVER_PORT++;
+			startServer();
+		}
+	}
+
+	/**
+	 * 停止服务
+	 */
+	public void stopServer() {
+		isRun = false;
+	}
+
+	/**
+	 * 接收或响应客户端请求的线程
+	 * 
+	 * @author Administrator
+	 *
+	 */
+	private class ServerThread extends Thread {
+		Socket socket;
+
+		public ServerThread(Socket socket) {
+			this.socket = socket;
+		}
+
+		@Override
+		public void run() {
+			ObjectInputStream ois = null;
+			ObjectOutputStream oos = null;
+
+			try {
+				ois = new ObjectInputStream(socket.getInputStream());
+				oos = new ObjectOutputStream(socket.getOutputStream());
+
+				// 获取客户端发来的RequestMsg对象
+				while (isRun) {
+					//获取客户端发来的RequestMsg对象
+					RequestMsg requestMsg = (RequestMsg) ois.readObject();
+				
+					if(requestMsg.getAction()==RequestAction.CLOSE_CLIENT){
+						break;
+					}
+					requestMsg.setClient_ip(socket.getInetAddress().getHostName());
+					// 怎么杨解析RequestMsg，分发请求
+					ResponseMsg responseMsg = ActionFactory.getAction(requestMsg).disposeRequest(requestMsg);
+
+					// 把响应对象返回给客户端
+
+					oos.writeObject(responseMsg);
+					oos.flush();
+				}
+			} catch (ClassNotFoundException e) {
+
+				e.printStackTrace();
+			} catch (IOException e) {
+
+				e.printStackTrace();
+			} finally {
+				try {
+					ois.close();
+					oos.close();
+					socket.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+
+}

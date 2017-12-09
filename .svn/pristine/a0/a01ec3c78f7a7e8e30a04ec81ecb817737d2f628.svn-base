@@ -1,0 +1,632 @@
+package cn.ucai.manage.view;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
+import javax.swing.JTabbedPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
+import cn.ucai.manage.view.CaiDan_GUI;
+import cn.ucai.util.ClockThread;
+import cn.ucai.util.Screen;
+
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import javax.swing.SwingConstants;
+import javax.swing.JRadioButton;
+import javax.swing.ButtonGroup;
+import javax.swing.JEditorPane;
+import java.awt.Dialog.ModalExclusionType;
+
+public class Business_GUI extends JFrame {
+	
+	private JPanel contentPane;
+	private JTable table;
+	private JTextField textField;
+	private JTextField textField_1;
+	private JTable table_1;
+	private JTextField textField_2;
+	private JTextField textField_3;
+	private JTextField textField_4;
+	private JTable table_2;
+	private JTextField textField_5;
+	private JTextField textField_6;
+	private JTable table_3;
+	private JTextField textField_7;
+	private JTextField textField_8;
+	private JTextField textField_9;
+	private JTextField textField_10;
+	private final ButtonGroup buttonGroup = new ButtonGroup();
+	private JTextField textField_11;
+	private JTextField textField_13;
+	private JTextField textField_14;
+	private JTextField textField_17;
+	private JTextField textField_18;
+	private  JEditorPane editorPane_1;
+	private JEditorPane editorPane;
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Business_GUI frame = new Business_GUI();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public Business_GUI() {
+		Screen screen=new Screen();
+		setResizable(false);
+		setTitle("业务管理");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds((screen.scareenwidth()-1053)/2, (screen.scareenhight()-1033)/2, 1053, 1033);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setIcon(new ImageIcon("D:\\workplace\\eclipse\\GHH_TakeTicket\\img\\项目图片\\2eeec15a6af52c6ffd5c6821fd50d319.jpg"));
+		lblNewLabel.setBounds(0, 0, 1037, 178);
+		contentPane.add(lblNewLabel);
+		
+		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane.setBounds(0, 177, 1037, 689);
+		contentPane.add(tabbedPane);
+		
+		JPanel panel_2 = new JPanel();
+		tabbedPane.addTab("禁用", null, panel_2, null);
+		panel_2.setLayout(null);
+		
+		JScrollPane scrollPane_2 = new JScrollPane();
+		scrollPane_2.setBounds(0, 0, 1032, 383);
+		panel_2.add(scrollPane_2);
+		
+		table_2 = new JTable();
+		table_2.setModel(new DefaultTableModel(
+			new Object[][] {
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+			},
+			new String[] {
+				"id", "\u4E1A\u52A1\u4EE3\u7801", "\u4E1A\u52A1\u540D\u79F0", "\u4E1A\u52A1\u8BF4\u660E", "\u6BCF\u65E5\u6700\u5927\u529E\u7406\u4E0A\u9650", "\u5F00\u59CB\u53D7\u7406\u65F6\u95F4", "\u7ED3\u675F\u53D7\u7406\u65F6\u95F4", "\u662F\u5426\u7981\u7528"
+			}
+		));
+		scrollPane_2.setViewportView(table_2);
+		
+		JLabel lblNewLabel_8 = new JLabel("按业务代码禁用");
+		lblNewLabel_8.setFont(new Font("宋体", Font.PLAIN, 18));
+		lblNewLabel_8.setBounds(412, 428, 128, 37);
+		panel_2.add(lblNewLabel_8);
+		
+		textField_5 = new JTextField();
+		textField_5.setFont(new Font("宋体", Font.PLAIN, 18));
+		textField_5.setBounds(396, 475, 159, 40);
+		panel_2.add(textField_5);
+		textField_5.setColumns(10);
+		
+		JButton btnNewButton_7 = new JButton("确定");
+		btnNewButton_7.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String a=textField_5.getText().trim();
+			}
+		});
+		btnNewButton_7.setFont(new Font("宋体", Font.BOLD, 18));
+		btnNewButton_7.setBounds(396, 540, 73, 40);
+		panel_2.add(btnNewButton_7);
+		
+		JButton btnNewButton_8 = new JButton("重置");
+		btnNewButton_8.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textField_5.setText("");
+			}
+		});
+		btnNewButton_8.setFont(new Font("宋体", Font.BOLD, 18));
+		btnNewButton_8.setBounds(479, 540, 76, 40);
+		panel_2.add(btnNewButton_8);
+		
+		JLabel lblNewLabel_9 = new JLabel("按业务名称禁用");
+		lblNewLabel_9.setFont(new Font("宋体", Font.PLAIN, 18));
+		lblNewLabel_9.setBounds(690, 428, 128, 37);
+		panel_2.add(lblNewLabel_9);
+		
+		textField_6 = new JTextField();
+		textField_6.setFont(new Font("宋体", Font.PLAIN, 18));
+		textField_6.setBounds(672, 475, 159, 40);
+		panel_2.add(textField_6);
+		textField_6.setColumns(10);
+		
+		JButton btnNewButton_9 = new JButton("确定");
+		btnNewButton_9.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String a=textField_6.getText().trim();
+			}
+		});
+		btnNewButton_9.setFont(new Font("宋体", Font.BOLD, 18));
+		btnNewButton_9.setBounds(672, 540, 73, 40);
+		panel_2.add(btnNewButton_9);
+		
+		JButton btnNewButton_10 = new JButton("重置");
+		btnNewButton_10.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textField_6.setText("");
+			}
+		});
+		btnNewButton_10.setFont(new Font("宋体", Font.BOLD, 18));
+		btnNewButton_10.setBounds(759, 540, 72, 40);
+		panel_2.add(btnNewButton_10);
+		
+		JLabel lblNewLabel_16 = new JLabel("按ID禁用");
+		lblNewLabel_16.setFont(new Font("宋体", Font.PLAIN, 18));
+		lblNewLabel_16.setBounds(149, 428, 128, 37);
+		panel_2.add(lblNewLabel_16);
+		
+		textField_11 = new JTextField();
+		textField_11.setFont(new Font("宋体", Font.PLAIN, 18));
+		textField_11.setBounds(112, 477, 165, 40);
+		panel_2.add(textField_11);
+		textField_11.setColumns(10);
+		
+		JButton btnNewButton_12 = new JButton("确定");
+		btnNewButton_12.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String a=textField_11.getText().trim();
+			}
+		});
+		btnNewButton_12.setFont(new Font("宋体", Font.BOLD, 18));
+		btnNewButton_12.setBounds(112, 540, 72, 40);
+		panel_2.add(btnNewButton_12);
+		
+		JButton btnNewButton_13 = new JButton("重置");
+		btnNewButton_13.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textField_11.setText("");
+			}
+		});
+		btnNewButton_13.setFont(new Font("宋体", Font.BOLD, 18));
+		btnNewButton_13.setBounds(214, 540, 73, 40);
+		panel_2.add(btnNewButton_13);
+		
+		JPanel panel_3 = new JPanel();
+		tabbedPane.addTab("修改", null, panel_3, null);
+		panel_3.setLayout(null);
+		
+		JScrollPane scrollPane_3 = new JScrollPane();
+		scrollPane_3.setBounds(0, 0, 1032, 383);
+		panel_3.add(scrollPane_3);
+		
+		table_3 = new JTable();
+		table_3.setModel(new DefaultTableModel(
+			new Object[][] {
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+			},
+			new String[] {
+				"id", "\u4E1A\u52A1\u4EE3\u7801", "\u4E1A\u52A1\u540D\u79F0", "\u4E1A\u52A1\u8BF4\u660E", "\u6BCF\u65E5\u6700\u5927\u529E\u7406\u4E0A\u9650", "\u5F00\u59CB\u53D7\u7406\u65F6\u95F4", "\u7ED3\u675F\u53D7\u7406\u65F6\u95F4", "\u662F\u5426\u7981\u7528"
+			}
+		));
+		scrollPane_3.setViewportView(table_3);
+		
+		JLabel lblNewLabel_10 = new JLabel("修改业务：");
+		lblNewLabel_10.setFont(new Font("宋体", Font.PLAIN, 18));
+		lblNewLabel_10.setBounds(44, 393, 91, 41);
+		panel_3.add(lblNewLabel_10);
+		
+		JLabel lblNewLabel_11 = new JLabel("ID：");
+		lblNewLabel_11.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_11.setFont(new Font("宋体", Font.PLAIN, 14));
+		lblNewLabel_11.setBounds(365, 393, 63, 33);
+		panel_3.add(lblNewLabel_11);
+		
+		textField_7 = new JTextField();
+		textField_7.setFont(new Font("宋体", Font.PLAIN, 18));
+		textField_7.setBounds(439, 393, 200, 33);
+		panel_3.add(textField_7);
+		textField_7.setColumns(10);
+		
+		JLabel lblNewLabel_12 = new JLabel("业务代码：");
+		lblNewLabel_12.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblNewLabel_12.setFont(new Font("宋体", Font.PLAIN, 14));
+		lblNewLabel_12.setBounds(325, 432, 101, 41);
+		panel_3.add(lblNewLabel_12);
+		
+		textField_8 = new JTextField();
+		textField_8.setFont(new Font("宋体", Font.PLAIN, 18));
+		textField_8.setBounds(439, 436, 200, 33);
+		panel_3.add(textField_8);
+		textField_8.setColumns(10);
+		
+		JLabel lblNewLabel_13 = new JLabel("业务名称：");
+		lblNewLabel_13.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblNewLabel_13.setFont(new Font("宋体", Font.PLAIN, 14));
+		lblNewLabel_13.setBounds(335, 475, 91, 41);
+		panel_3.add(lblNewLabel_13);
+		
+		textField_9 = new JTextField();
+		textField_9.setFont(new Font("宋体", Font.PLAIN, 18));
+		textField_9.setBounds(439, 479, 200, 33);
+		panel_3.add(textField_9);
+		textField_9.setColumns(10);
+		
+		JLabel lblNewLabel_14 = new JLabel("每天最大办理量：");
+		lblNewLabel_14.setFont(new Font("宋体", Font.PLAIN, 14));
+		lblNewLabel_14.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblNewLabel_14.setBounds(284, 526, 144, 33);
+		panel_3.add(lblNewLabel_14);
+		
+		textField_10 = new JTextField();
+		textField_10.setFont(new Font("宋体", Font.PLAIN, 18));
+		textField_10.setBounds(439, 522, 200, 41);
+		panel_3.add(textField_10);
+		textField_10.setColumns(10);
+		
+		JLabel lblNewLabel_15 = new JLabel("是否禁用：");
+		lblNewLabel_15.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblNewLabel_15.setFont(new Font("宋体", Font.PLAIN, 14));
+		lblNewLabel_15.setBounds(555, 569, 84, 33);
+		panel_3.add(lblNewLabel_15);
+		
+		JRadioButton rdbtnNewRadioButton_2 = new JRadioButton("是");
+		rdbtnNewRadioButton_2.setSelected(true);
+		buttonGroup.add(rdbtnNewRadioButton_2);
+		rdbtnNewRadioButton_2.setBounds(657, 560, 42, 50);
+		panel_3.add(rdbtnNewRadioButton_2);
+		
+		JRadioButton rdbtnNewRadioButton_3 = new JRadioButton("否");
+		buttonGroup.add(rdbtnNewRadioButton_3);
+		rdbtnNewRadioButton_3.setFont(new Font("宋体", Font.PLAIN, 14));
+		rdbtnNewRadioButton_3.setBounds(751, 560, 42, 50);
+		panel_3.add(rdbtnNewRadioButton_3);
+		
+		JButton btnNewButton_11 = new JButton("确定");
+		btnNewButton_11.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String id=textField_7.getText();
+				String YWDM=textField_8.getText().trim();
+				String YWMC=textField_9.getText().trim();
+				int MAX;
+				if((textField_10.getText().trim())==null){
+					MAX=0;
+				}
+				else{
+					MAX=Integer.valueOf(textField_10.getText().trim());
+				}
+			rdbtnNewRadioButton_2.isSelected();
+			String YWSM=editorPane_1.getText();
+			String KTIME=textField_13.getText();
+			String JTIME=textField_14.getText();
+			
+			}
+		});
+		btnNewButton_11.setFont(new Font("宋体", Font.BOLD, 16));
+		btnNewButton_11.setBounds(630, 612, 91, 41);
+		panel_3.add(btnNewButton_11);
+		
+		JLabel lblNewLabel_17 = new JLabel("业务说明：");
+		lblNewLabel_17.setFont(new Font("宋体", Font.PLAIN, 18));
+		lblNewLabel_17.setBounds(719, 393, 91, 33);
+		panel_3.add(lblNewLabel_17);
+		
+		JLabel lblNewLabel_18 = new JLabel("开始受理时间：");
+		lblNewLabel_18.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblNewLabel_18.setFont(new Font("宋体", Font.PLAIN, 18));
+		lblNewLabel_18.setBounds(671, 445, 137, 28);
+		panel_3.add(lblNewLabel_18);
+		
+		textField_13 = new JTextField();
+		textField_13.setFont(new Font("宋体", Font.PLAIN, 18));
+		textField_13.setBounds(802, 440, 144, 33);
+		panel_3.add(textField_13);
+		textField_13.setColumns(10);
+		
+		JLabel lblNewLabel_19 = new JLabel("结束受理时间:");
+		lblNewLabel_19.setFont(new Font("宋体", Font.PLAIN, 18));
+		lblNewLabel_19.setBounds(682, 496, 119, 33);
+		panel_3.add(lblNewLabel_19);
+		
+		textField_14 = new JTextField();
+		textField_14.setFont(new Font("宋体", Font.PLAIN, 18));
+		textField_14.setBounds(802, 496, 144, 33);
+		panel_3.add(textField_14);
+		textField_14.setColumns(10);
+		
+		JEditorPane editorPane_1 = new JEditorPane();
+		editorPane_1.setBounds(802, 393, 144, 35);
+		panel_3.add(editorPane_1);
+		
+		JPanel panel = new JPanel();
+		tabbedPane.addTab("查看", null, panel, null);
+		panel.setLayout(null);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(0, 0, 1032, 383);
+		panel.add(scrollPane);
+		
+		table = new JTable();
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+			},
+			new String[] {
+				"id", "\u4E1A\u52A1\u4EE3\u7801", "\u4E1A\u52A1\u540D\u79F0", "\u4E1A\u52A1\u8BF4\u660E", "\u4E1A\u52A1\u6BCF\u65E5\u529E\u7406\u4E0A\u9650", "\u5F00\u59CB\u53D7\u7406\u65F6\u95F4", "\u7ED3\u675F\u53D7\u7406\u65F6\u95F4", "\u662F\u5426\u7981\u7528"
+			}
+		));
+		scrollPane.setViewportView(table);
+		
+		JLabel lblNewLabel_1 = new JLabel("按业务代码查询");
+		lblNewLabel_1.setFont(new Font("宋体", Font.PLAIN, 18));
+		lblNewLabel_1.setBounds(238, 417, 174, 50);
+		panel.add(lblNewLabel_1);
+		
+		textField = new JTextField();
+		textField.setFont(new Font("宋体", Font.PLAIN, 20));
+		textField.setBounds(192, 477, 202, 50);
+		panel.add(textField);
+		textField.setColumns(10);
+		
+		JButton btnNewButton = new JButton("确定");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String a=textField.getText();
+			}
+		});
+		btnNewButton.setFont(new Font("宋体", Font.BOLD, 18));
+		btnNewButton.setBounds(192, 544, 90, 50);
+		panel.add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("重置");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textField.setText("");
+			}
+		});
+		btnNewButton_1.setFont(new Font("宋体", Font.BOLD, 18));
+		btnNewButton_1.setBounds(305, 544, 90, 50);
+		panel.add(btnNewButton_1);
+		
+		JLabel lblNewLabel_2 = new JLabel("按业务名称查询");
+		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_2.setFont(new Font("宋体", Font.PLAIN, 18));
+		lblNewLabel_2.setBounds(561, 417, 157, 50);
+		panel.add(lblNewLabel_2);
+		
+		textField_1 = new JTextField();
+		textField_1.setFont(new Font("宋体", Font.PLAIN, 20));
+		textField_1.setBounds(541, 477, 202, 50);
+		panel.add(textField_1);
+		textField_1.setColumns(10);
+		
+		JButton btnNewButton_2 = new JButton("确定");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String a=textField_1.getText();
+			}
+		});
+		btnNewButton_2.setFont(new Font("宋体", Font.BOLD, 18));
+		btnNewButton_2.setBounds(541, 544, 90, 50);
+		panel.add(btnNewButton_2);
+		
+		JButton btnNewButton_3 = new JButton("重置");
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textField_1.setText("");
+			}
+		});
+		btnNewButton_3.setFont(new Font("宋体", Font.BOLD, 18));
+		btnNewButton_3.setBounds(653, 544, 90, 50);
+		panel.add(btnNewButton_3);
+		
+		JPanel panel_1 = new JPanel();
+		tabbedPane.addTab("添加", null, panel_1, null);
+		panel_1.setLayout(null);
+		
+		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1.setBounds(0, 0, 1032, 383);
+		panel_1.add(scrollPane_1);
+		
+		table_1 = new JTable();
+		table_1.setModel(new DefaultTableModel(
+			new Object[][] {
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+			},
+			new String[] {
+				"id", "\u4E1A\u52A1\u4EE3\u7801", "\u4E1A\u52A1\u540D\u79F0", "\u4E1A\u52A1\u8BF4\u660E", "\u6BCF\u65E5\u6700\u5927\u529E\u7406\u4E0A\u9650", "\u5F00\u59CB\u53D7\u7406\u65F6\u95F4", "\u7ED3\u675F\u53D7\u7406\u65F6\u95F4", "\u662F\u5426\u7981\u7528"
+			}
+		));
+		scrollPane_1.setViewportView(table_1);
+		
+		JLabel lblNewLabel_3 = new JLabel("添加业务：");
+		lblNewLabel_3.setFont(new Font("宋体", Font.BOLD, 18));
+		lblNewLabel_3.setBounds(229, 413, 100, 38);
+		panel_1.add(lblNewLabel_3);
+		
+		JLabel lblNewLabel_4 = new JLabel("业务代码：");
+		lblNewLabel_4.setFont(new Font("宋体", Font.PLAIN, 18));
+		lblNewLabel_4.setBounds(343, 413, 90, 38);
+		panel_1.add(lblNewLabel_4);
+		
+		textField_2 = new JTextField();
+		textField_2.setFont(new Font("宋体", Font.PLAIN, 18));
+		textField_2.setBounds(443, 413, 124, 38);
+		panel_1.add(textField_2);
+		textField_2.setColumns(10);
+		
+		JLabel lblNewLabel_5 = new JLabel("业务名称：");
+		lblNewLabel_5.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblNewLabel_5.setFont(new Font("宋体", Font.PLAIN, 18));
+		lblNewLabel_5.setBounds(333, 476, 100, 38);
+		panel_1.add(lblNewLabel_5);
+		
+		textField_3 = new JTextField();
+		textField_3.setFont(new Font("宋体", Font.PLAIN, 18));
+		textField_3.setBounds(443, 476, 124, 38);
+		panel_1.add(textField_3);
+		textField_3.setColumns(10);
+		
+		JLabel lblNewLabel_6 = new JLabel("每天最大办理量：");
+		lblNewLabel_6.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblNewLabel_6.setFont(new Font("宋体", Font.PLAIN, 18));
+		lblNewLabel_6.setBounds(286, 529, 147, 38);
+		panel_1.add(lblNewLabel_6);
+		
+		textField_4 = new JTextField();
+		textField_4.setFont(new Font("宋体", Font.PLAIN, 18));
+		textField_4.setBounds(443, 532, 124, 37);
+		panel_1.add(textField_4);
+		textField_4.setColumns(10);
+		
+		JLabel lblNewLabel_7 = new JLabel("是否禁用：");
+		lblNewLabel_7.setFont(new Font("宋体", Font.PLAIN, 16));
+		lblNewLabel_7.setBounds(520, 579, 89, 37);
+		panel_1.add(lblNewLabel_7);
+		
+		JRadioButton rdbtnNewRadioButton = new JRadioButton("是");
+		rdbtnNewRadioButton.setSelected(true);
+		rdbtnNewRadioButton.setBounds(615, 587, 57, 23);
+		panel_1.add(rdbtnNewRadioButton);
+		
+				
+				
+				JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("否");
+				rdbtnNewRadioButton_1.setBounds(669, 587, 46, 23);
+				panel_1.add(rdbtnNewRadioButton_1);	
+				rdbtnNewRadioButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						rdbtnNewRadioButton_1.setSelected(false);
+						
+					}
+				});
+				rdbtnNewRadioButton_1.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+							rdbtnNewRadioButton.setSelected(false);
+						
+					}
+				});
+				
+				JButton btnNewButton_5 = new JButton("确定");
+				btnNewButton_5.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						String a=textField_2.getText().trim();
+						String b=textField_3.getText().trim();
+						int MAX;
+						if((textField_4.getText().trim())==null){
+							MAX=0;
+						}
+						else{
+							MAX=Integer.valueOf(textField_4.getText().trim());
+						}
+						rdbtnNewRadioButton.isSelected();
+						String c=editorPane.getText();
+						String d=textField_17.getText();
+						String o=textField_18.getText();
+					}
+				});
+				
+				btnNewButton_5.setFont(new Font("宋体", Font.BOLD, 18));
+				btnNewButton_5.setBounds(519, 611, 93, 38);
+				panel_1.add(btnNewButton_5);
+				
+				JButton btnNewButton_6 = new JButton("重置");
+				btnNewButton_6.setFont(new Font("宋体", Font.BOLD, 18));
+				btnNewButton_6.setBounds(650, 611, 93, 38);
+				panel_1.add(btnNewButton_6);
+				
+				JLabel lblNewLabel_21 = new JLabel("业务说明：");
+				lblNewLabel_21.setHorizontalAlignment(SwingConstants.RIGHT);
+				lblNewLabel_21.setFont(new Font("宋体", Font.PLAIN, 18));
+				lblNewLabel_21.setBounds(631, 413, 100, 38);
+				panel_1.add(lblNewLabel_21);
+				
+				JLabel lblNewLabel_22 = new JLabel("开始受理时间：");
+				lblNewLabel_22.setHorizontalAlignment(SwingConstants.RIGHT);
+				lblNewLabel_22.setFont(new Font("宋体", Font.PLAIN, 18));
+				lblNewLabel_22.setBounds(603, 474, 128, 38);
+				panel_1.add(lblNewLabel_22);
+				
+				textField_17 = new JTextField();
+				textField_17.setFont(new Font("宋体", Font.PLAIN, 18));
+				textField_17.setBounds(741, 466, 147, 38);
+				panel_1.add(textField_17);
+				textField_17.setColumns(10);
+				
+				JLabel lblNewLabel_23 = new JLabel("结束受理时间：");
+				lblNewLabel_23.setFont(new Font("宋体", Font.PLAIN, 18));
+				lblNewLabel_23.setHorizontalAlignment(SwingConstants.RIGHT);
+				lblNewLabel_23.setBounds(603, 526, 140, 32);
+				panel_1.add(lblNewLabel_23);
+				
+				textField_18 = new JTextField();
+				textField_18.setFont(new Font("宋体", Font.PLAIN, 18));
+				textField_18.setBounds(741, 526, 147, 41);
+				panel_1.add(textField_18);
+				textField_18.setColumns(10);
+				
+				JEditorPane editorPane = new JEditorPane();
+				editorPane.setBounds(741, 413, 147, 38);
+				panel_1.add(editorPane);
+		
+		JButton btnNewButton_4 = new JButton("返回主菜单");
+		btnNewButton_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				CaiDan_GUI c=new CaiDan_GUI();
+				c.setVisible(true);
+			}
+		});
+		btnNewButton_4.setFont(new Font("宋体", Font.BOLD, 18));
+		btnNewButton_4.setBounds(101, 910, 145, 61);
+		contentPane.add(btnNewButton_4);
+		
+		JLabel lblNewLabel_20 = new JLabel("");
+		lblNewLabel_20.setFont(new Font("宋体", Font.BOLD, 22));
+		lblNewLabel_20.setBounds(630, 910, 407, 61);
+		contentPane.add(lblNewLabel_20);
+		ClockThread clockThread=new ClockThread(lblNewLabel_20);
+		clockThread.setPriority(10);
+		clockThread.start();
+	}
+}

@@ -1,0 +1,9 @@
+package cn.ucai.server.service;
+/**
+ * 叫号模块处理的接口
+ * @author Administrator
+ *
+ */
+public interface Cal_lNumService {
+
+}

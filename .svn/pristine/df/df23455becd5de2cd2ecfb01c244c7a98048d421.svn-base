@@ -1,0 +1,19 @@
+package cn.ucai.server.action;
+
+import cn.ucai.dto.RequestMsg;
+import cn.ucai.dto.ResponseMsg;
+
+/**
+ * 请求叫号
+ * @author Administrator
+ *
+ */
+public class Call_CallNumAction implements BaseAction{
+
+	@Override
+	public ResponseMsg disposeRequest(RequestMsg requestMsg) {
+		
+		return null;
+	}
+
+}

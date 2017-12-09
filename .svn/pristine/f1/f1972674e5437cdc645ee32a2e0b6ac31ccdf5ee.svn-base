@@ -1,0 +1,16 @@
+package cn.ucai.server.service;
+
+import cn.ucai.entity.Ticket;
+
+/**
+ * 叫号模块处理的接口
+ * @author Administrator
+ *
+ */
+public interface Call_NumService {
+	
+	/**
+	 * 叫号
+	 */
+	public Ticket CallNum();
+}

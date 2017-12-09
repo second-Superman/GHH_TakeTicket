@@ -1,0 +1,9 @@
+package cn.ucai.server.service;
+/**
+ * 办理成功的处理接口
+ * @author Administrator
+ *
+ */
+public interface Call_Dispose_SuccessService {
+
+}

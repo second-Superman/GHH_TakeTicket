@@ -1,0 +1,381 @@
+package cn.ucai.manage.view;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
+import javax.swing.JTabbedPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
+
+import cn.ucai.entity.Window;
+import cn.ucai.server.dao.Impl.WindowDaoImpl;
+import cn.ucai.util.ClockThread;
+import cn.ucai.util.Screen;
+
+import java.awt.Font;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import javax.swing.JRadioButton;
+import javax.swing.ButtonGroup;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
+import java.awt.event.ActionEvent;
+
+public class Window_GUI extends JFrame {
+
+	private JPanel contentPane;
+	private JTable table;
+	private JTable table_1;
+	private JTable table_2;
+	private JTable table_3;
+	private JTextField textField;
+	private JTextField textField_1;
+	private JTextField textField_2;
+	private JTextField textField_3;
+	private final ButtonGroup buttonGroup = new ButtonGroup();
+	private final ButtonGroup buttonGroup_1 = new ButtonGroup();
+	private JTextField textField_4;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Window_GUI frame = new Window_GUI();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public Window_GUI() {
+		Screen s=new Screen();
+		setResizable(false);
+		setTitle("窗口管理");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds((s.scareenwidth()-1060)/2, (s.scareenhight()-1025)/2, 1060, 1025);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon("img\\项目图片\\2eeec15a6af52c6ffd5c6821fd50d319.jpg"));
+		lblNewLabel.setBounds(0, 0, 1046, 193);
+		contentPane.add(lblNewLabel);
+		
+		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane.setBounds(0, 192, 1046, 673);
+		contentPane.add(tabbedPane);
+		
+		JPanel panel_1 = new JPanel();
+		tabbedPane.addTab("添加", null, panel_1, null);
+		panel_1.setLayout(null);
+		
+		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1.setBounds(0, 0, 1041, 383);
+		panel_1.add(scrollPane_1);
+		
+		table_2 = new JTable();
+		WindowDaoImpl wl=new WindowDaoImpl();
+		List<Window> list=wl.selectList(new Window());
+		Object[][] window=new Object[list.size()][3];
+		for(int i=0;i<list.size();i++){
+			window[i][0] = list.get(i).getId();
+			window[i][1] = list.get(i).getNo();
+			window[i][2] = list.get(i).getDisabled();
+		}
+		table_2.setModel(new DefaultTableModel(
+			
+				window,
+			new String[] {
+				"ID", "\u7A97\u53E3\u53F7", "\u662F\u5426\u7981\u7528"
+			}
+		));
+		scrollPane_1.setViewportView(table_2);
+		
+		JLabel lblNewLabel_2 = new JLabel("添加窗口号");
+		lblNewLabel_2.setFont(new Font("宋体", Font.PLAIN, 18));
+		lblNewLabel_2.setBounds(407, 393, 98, 50);
+		panel_1.add(lblNewLabel_2);
+		
+		textField_2 = new JTextField();
+		textField_2.setFont(new Font("宋体", Font.PLAIN, 20));
+		textField_2.setBounds(349, 437, 200, 50);
+		panel_1.add(textField_2);
+		textField_2.setColumns(10);
+		
+		JButton btnNewButton_5 = new JButton("确定");
+		btnNewButton_5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int no =Integer.valueOf(textField_2.getText());
+			
+			}
+		});
+		btnNewButton_5.setFont(new Font("宋体", Font.BOLD, 18));
+		btnNewButton_5.setBounds(349, 547, 93, 52);
+		panel_1.add(btnNewButton_5);
+		
+		JButton btnNewButton_6 = new JButton("重置");
+		btnNewButton_6.setFont(new Font("宋体", Font.BOLD, 18));
+		btnNewButton_6.setBounds(456, 549, 93, 52);
+		panel_1.add(btnNewButton_6);
+		
+		JLabel lblNewLabel_3 = new JLabel("是否禁用");
+		lblNewLabel_3.setBounds(349, 497, 56, 46);
+		panel_1.add(lblNewLabel_3);
+		
+		JRadioButton rdbtnNewRadioButton = new JRadioButton("是");
+		rdbtnNewRadioButton.setSelected(true);
+		buttonGroup_1.add(rdbtnNewRadioButton);
+		rdbtnNewRadioButton.setBounds(404, 509, 44, 23);
+		panel_1.add(rdbtnNewRadioButton);
+		
+		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("否");
+		buttonGroup_1.add(rdbtnNewRadioButton_1);
+		rdbtnNewRadioButton_1.setBounds(454, 509, 121, 23);
+		panel_1.add(rdbtnNewRadioButton_1);
+		
+		JPanel panel_3 = new JPanel();
+		tabbedPane.addTab("修改", null, panel_3, null);
+		panel_3.setLayout(null);
+		
+		JScrollPane scrollPane_3 = new JScrollPane();
+		scrollPane_3.setBounds(0, 0, 1041, 383);
+		panel_3.add(scrollPane_3);
+		
+		table = new JTable();
+		List<Window> list1=wl.selectList(new Window());
+		Object[][] window1=new Object[list1.size()][3];
+		for(int i=0;i<list1.size();i++){
+			window1[i][0] = list1.get(i).getId();
+			window1[i][1] = list1.get(i).getNo();
+			window1[i][2] = list1.get(i).getDisabled();
+		}
+		table.setModel(new DefaultTableModel(
+			
+				window1,
+			new String[] {
+				"ID", "\u7A97\u53E3\u53F7", "\u662F\u5426\u7981\u7528"
+			}
+		));
+		scrollPane_3.setViewportView(table);
+		
+		JLabel lblNewLabel_4 = new JLabel("窗口号：");
+		lblNewLabel_4.setFont(new Font("宋体", Font.PLAIN, 18));
+		lblNewLabel_4.setBounds(216, 403, 80, 50);
+		panel_3.add(lblNewLabel_4);
+		
+		textField_3 = new JTextField();
+		textField_3.setFont(new Font("宋体", Font.PLAIN, 18));
+		textField_3.setBounds(284, 403, 200, 50);
+		panel_3.add(textField_3);
+		textField_3.setColumns(10);
+		
+		JLabel lblNewLabel_5 = new JLabel("是否禁用");
+		lblNewLabel_5.setBounds(226, 459, 61, 50);
+		panel_3.add(lblNewLabel_5);
+		
+		JRadioButton rdbtnNewRadioButton_2 = new JRadioButton("是");
+		rdbtnNewRadioButton_2.setSelected(true);
+		buttonGroup.add(rdbtnNewRadioButton_2);
+		rdbtnNewRadioButton_2.setBounds(284, 473, 44, 23);
+		panel_3.add(rdbtnNewRadioButton_2);
+		
+		JRadioButton rdbtnNewRadioButton_3 = new JRadioButton("否");
+		buttonGroup.add(rdbtnNewRadioButton_3);
+		rdbtnNewRadioButton_3.setBounds(334, 473, 61, 23);
+		panel_3.add(rdbtnNewRadioButton_3);
+		
+		JButton btnNewButton_8 = new JButton("确定");
+		btnNewButton_8.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				rdbtnNewRadioButton_2.isSelected();
+			}
+		});
+		btnNewButton_8.setFont(new Font("宋体", Font.BOLD, 20));
+		btnNewButton_8.setBounds(276, 512, 93, 45);
+		panel_3.add(btnNewButton_8);
+		
+		JPanel panel_2 = new JPanel();
+		tabbedPane.addTab("禁用", null, panel_2, null);
+		panel_2.setLayout(null);
+		
+		JScrollPane scrollPane_2 = new JScrollPane();
+		scrollPane_2.setBounds(0, 0, 1041, 383);
+		panel_2.add(scrollPane_2);
+		
+		table_3 = new JTable();
+		List<Window> list2=wl.selectList(new Window());
+		Object[][] window2=new Object[list2.size()][3];
+		for(int i=0;i<list2.size();i++){
+			window2[i][0] = list2.get(i).getId();
+			window2[i][1] = list2.get(i).getNo();
+			window2[i][2] = list2.get(i).getDisabled();
+		}
+		table_3.setModel(new DefaultTableModel(
+			
+			window2,
+			new String[] {
+				"ID", "\u7A97\u53E3\u53F7", "\u662F\u5426\u7981\u7528"
+			}
+		));
+		scrollPane_2.setViewportView(table_3);
+		
+		JLabel lblNewLabel_6 = new JLabel("按窗口号禁用：");
+		lblNewLabel_6.setFont(new Font("宋体", Font.PLAIN, 18));
+		lblNewLabel_6.setBounds(240, 405, 126, 50);
+		panel_2.add(lblNewLabel_6);
+		
+		textField_4 = new JTextField();
+		textField_4.setFont(new Font("宋体", Font.PLAIN, 18));
+		textField_4.setBounds(372, 405, 200, 50);
+		panel_2.add(textField_4);
+		textField_4.setColumns(10);
+		
+		JButton btnNewButton_7 = new JButton("确定");
+		btnNewButton_7.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int no=Integer.valueOf(textField_4.getText());
+			}
+		});
+		btnNewButton_7.setFont(new Font("宋体", Font.BOLD, 18));
+		btnNewButton_7.setBounds(338, 480, 93, 50);
+		panel_2.add(btnNewButton_7);
+		
+		JPanel panel = new JPanel();
+		tabbedPane.addTab("查询", null, panel, null);
+		panel.setLayout(null);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(0, 0, 1041, 383);
+		panel.add(scrollPane);
+		
+		table_1 = new JTable();
+		List<Window> list3=wl.selectList(new Window());
+		Object[][] window3=new Object[list3.size()][3];
+		for(int i=0;i<list3.size();i++){
+			window3[i][0] = list3.get(i).getId();
+			window3[i][1] = list3.get(i).getNo();
+			window3[i][2] = list3.get(i).getDisabled();
+		}
+		table_1.setModel(new DefaultTableModel(
+			
+				window3,
+			new String[] {
+				"ID", "\u7A97\u53E3\u53F7", "\u662F\u5426\u7981\u7528"
+			}
+		));
+		scrollPane.setViewportView(table_1);
+		
+		JLabel label = new JLabel("按序号查询");
+		label.setFont(new Font("宋体", Font.PLAIN, 18));
+		label.setBounds(203, 412, 98, 50);
+		panel.add(label);
+		
+		textField = new JTextField();
+		textField.setFont(new Font("宋体", Font.PLAIN, 18));
+		textField.setBounds(148, 458, 200, 50);
+		panel.add(textField);
+		textField.setColumns(10);
+		
+		JButton btnNewButton = new JButton("确定");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int id=Integer.valueOf(textField.getText());
+				WindowDaoImpl wl=new WindowDaoImpl();
+				Window list=wl.selectById(id);
+				Object[][] window=new Object[1][3];
+				window[0][0]=list.getId();
+				window[0][1]=list.getNo();
+				window[0][2]=list.getDisabled();
+				table_1.setModel(new DefaultTableModel(
+						
+						window,
+					new String[] {
+						"ID", "\u7A97\u53E3\u53F7", "\u662F\u5426\u7981\u7528"
+					}
+				));
+			}
+		});
+		btnNewButton.setFont(new Font("宋体", Font.BOLD, 18));
+		btnNewButton.setBounds(148, 518, 93, 46);
+		panel.add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("重置");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textField.setText("");
+			}
+		});
+		btnNewButton_1.setFont(new Font("宋体", Font.BOLD, 18));
+		btnNewButton_1.setBounds(251, 518, 93, 46);
+		panel.add(btnNewButton_1);
+		
+		JLabel lblNewLabel_1 = new JLabel("按窗口号查询");
+		lblNewLabel_1.setFont(new Font("宋体", Font.PLAIN, 18));
+		lblNewLabel_1.setBounds(503, 401, 108, 50);
+		panel.add(lblNewLabel_1);
+		
+		textField_1 = new JTextField();
+		textField_1.setFont(new Font("宋体", Font.PLAIN, 18));
+		textField_1.setBounds(450, 458, 200, 50);
+		panel.add(textField_1);
+		textField_1.setColumns(10);
+		
+		JButton btnNewButton_2 = new JButton("确定");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int no=Integer.valueOf(textField_1.getText());
+			}
+		});
+		btnNewButton_2.setFont(new Font("宋体", Font.BOLD, 18));
+		btnNewButton_2.setBounds(450, 518, 93, 46);
+		panel.add(btnNewButton_2);
+		
+		JButton btnNewButton_3 = new JButton("重置");
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textField_1.setText("");
+			}
+		});
+		btnNewButton_3.setFont(new Font("宋体", Font.BOLD, 18));
+		btnNewButton_3.setBounds(557, 518, 93, 46);
+		panel.add(btnNewButton_3);
+		
+		JButton btnNewButton_4 = new JButton("返回主菜单");
+		btnNewButton_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				CaiDan_GUI c=new CaiDan_GUI();
+				c.setVisible(true);
+			}
+		});
+		btnNewButton_4.setFont(new Font("宋体", Font.PLAIN, 18));
+		btnNewButton_4.setBounds(67, 908, 144, 55);
+		contentPane.add(btnNewButton_4);
+		
+		JLabel lblNewLabel_7 = new JLabel("");
+		lblNewLabel_7.setFont(new Font("宋体", Font.BOLD, 22));
+		lblNewLabel_7.setBounds(615, 908, 431, 55);
+		contentPane.add(lblNewLabel_7);
+		ClockThread clockThread=new ClockThread(lblNewLabel_7);
+		clockThread.setPriority(10);
+		clockThread.start();
+	}
+}

@@ -1,0 +1,38 @@
+package cn.ucai.server.action;
+
+import cn.ucai.dto.RequestMsg;
+import cn.ucai.dto.ResponseMsg;
+import cn.ucai.entity.Ticket;
+import cn.ucai.server.service.Call_NumService;
+import cn.ucai.server.service.Impl.Call_NumserviceImpl;
+
+/**
+ * 请求叫号
+ * @author Administrator
+ *
+ */
+public class Call_CallNumAction implements BaseAction{
+	Call_NumService CallNum=new Call_NumserviceImpl();
+	@Override
+	public ResponseMsg disposeRequest(RequestMsg requestMsg) {
+		
+		System.out.println(requestMsg.getData().get("b_code"));
+	
+		//
+		Ticket ticket = CallNum.CallNum(requestMsg.getData().get("b_code"));
+		
+		
+		
+		//封装响应请求
+		ResponseMsg responseMsg=new ResponseMsg();
+		responseMsg.setResult(true);
+		responseMsg.setMsg("叫号成功");
+		responseMsg.setData(ticket);
+		return responseMsg;
+	}
+//	public static void main(String[] args) {
+//		Call_CallNumAction c = new Call_CallNumAction();
+//		RequestMsg requestMsg=new RequestMsg();
+//		System.out.println(c.disposeRequest(requestMsg).getData());
+//	}
+}

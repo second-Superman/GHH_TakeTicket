@@ -1,0 +1,20 @@
+package cn.ucai.server.action;
+
+import cn.ucai.dto.RequestMsg;
+import cn.ucai.dto.ResponseMsg;
+
+public class Call_Dispose_FailAction implements BaseAction{
+
+	@Override
+	public ResponseMsg disposeRequest(RequestMsg requestMsg) {
+		//
+		
+		//封装响应的数据
+		ResponseMsg responseMsg=new ResponseMsg();
+		responseMsg.setResult(true);
+		responseMsg.setMsg("办理失败");
+		//responseMsg.setData(data);
+		return responseMsg;
+	}
+
+}

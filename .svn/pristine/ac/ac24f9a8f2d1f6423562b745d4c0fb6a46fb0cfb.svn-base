@@ -1,0 +1,7 @@
+package cn.ucai.server.service.Impl;
+
+import cn.ucai.server.service.Call_Stop_ServerService;
+
+public class Call_Stop_ServerServiceImpl implements Call_Stop_ServerService{
+
+}
